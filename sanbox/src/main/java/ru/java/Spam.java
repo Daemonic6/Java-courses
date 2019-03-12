@@ -11,7 +11,7 @@ public class Spam extends Thread {
 
   public Spam(int[] latency, String[] messages) {
     if (latency.length != messages.length) {
-      throw new IllegalArgumentException("Error! Arrays of latency and messages aren't equal!!!");
+      throw new IllegalArgumentException("Error");
     }
     this.latency = latency;
     this.messages = messages;
@@ -41,7 +41,6 @@ public class Spam extends Thread {
 
     public Listener(Thread thread) {
       super();
-      setDaemon(true);
       this.thread = thread;
       start();
     }
@@ -65,7 +64,8 @@ public class Spam extends Thread {
     String[] messages = { "First", "Second", "Third", "Fourth", "Fifth", "Sixth" };
     Thread spam = new Spam(latency, messages);
     Thread listener = new Listener(spam);
-
+    Part2 p = new Part2();
+    p.main();
   }
 
 }
